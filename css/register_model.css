@@ -1,0 +1,168 @@
+/* register_model.css - Estilos para Solicitud de Modelo Premium */
+:root {
+    --gold: #d4af37;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    --bg-dark: #0a0a0a;
+}
+
+body {
+    background: var(--bg-dark);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.gold-card {
+    width: 100%;
+    max-width: 550px;
+    padding: 40px;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    background: #000;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+}
+
+.auth-title {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.streamer-question {
+    background: #0f0f0f;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.streamer-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.streamer-btn {
+    padding: 12px 30px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #111;
+    color: #888;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.streamer-btn.active-si {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.streamer-btn.active-no {
+    border-color: #60a5fa;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background: #080808;
+    border: 1px solid #222;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.btn-gold {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+.btn-gold:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+.form-hidden {
+    display: none;
+}
+
+.section-divider {
+    border-top: 1px solid #222;
+    margin: 30px 0 20px;
+    position: relative;
+}
+
+.section-label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #000;
+    padding: 0 10px;
+    color: #555;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .gold-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .auth-title {
+        font-size: 1.4rem;
+    }
+
+    .streamer-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

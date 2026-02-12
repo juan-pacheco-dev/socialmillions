@@ -1,0 +1,157 @@
+/* css/header.css */
+.main-header {
+    background: rgba(2, 2, 2, 0.7);
+    backdrop-filter: blur(20px);
+    padding: 18px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.02em;
+}
+
+.highlight {
+    color: #3b82f6;
+}
+
+.highlight-gold {
+    color: #FFD700 !important;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.main-nav a:hover {
+    color: #ffffff;
+}
+
+.nav-btn-outline {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.nav-btn-outline:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    color: #ffffff;
+}
+
+
+.main-nav .btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.main-nav .btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Menú Responsivo para Móvil */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: #020617;
+        backdrop-filter: blur(20px);
+        padding: 100px 40px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .main-nav a {
+        font-size: 1.1rem;
+    }
+
+    /* Animación del Hamburguesa */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}

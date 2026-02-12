@@ -1,0 +1,404 @@
+/**
+ * ============================================================
+ * ESTILOS DEL SISTEMA DE PROTECCIÓN ANTI-CAPTURA
+ * ============================================================
+ * 
+ * Estilos para overlays, watermarks y estados de protección.
+ */
+
+/* ========== VARIABLES ========== */
+:root {
+    --protection-bg: rgba(0, 0, 0, 0.95);
+    --protection-blur: blur(30px);
+    --protection-text: #FFD700;
+    --watermark-opacity: 0.12;
+    --transition-speed: 0.3s;
+}
+
+/* ========== OVERLAY DE PROTECCIÓN ========== */
+#protection-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--protection-bg);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#protection-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.protection-message {
+    text-align: center;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+    animation: pulse-protection 2s infinite;
+}
+
+.protection-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.protection-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--protection-text);
+    margin-bottom: 10px;
+}
+
+.protection-subtext {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+@keyframes pulse-protection {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== ESTADO DE CONTENIDO PROTEGIDO ========== */
+body.content-protected .secure-container,
+body.content-protected .content-grid,
+body.content-protected .content-item,
+body.content-protected .model-panel,
+body.content-protected video,
+body.content-protected img.protected-image {
+    filter: var(--protection-blur) !important;
+    pointer-events: none !important;
+    transition: filter var(--transition-speed) ease;
+}
+
+/* ========== WATERMARK DINÁMICO ========== */
+.dynamic-watermark {
+    position: fixed;
+    z-index: 99998;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: var(--watermark-opacity);
+    transition: all 1s ease;
+}
+
+.dynamic-watermark .wm-text {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(0, 0, 0, 0.8);
+    transform: rotate(-15deg);
+    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+/* Marca de agua en pantalla completa */
+:fullscreen .dynamic-watermark,
+:-webkit-full-screen .dynamic-watermark {
+    opacity: calc(var(--watermark-opacity) * 1.5);
+}
+
+/* ========== PROTECCIÓN DE IMÁGENES ========== */
+img.protected-image {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: auto;
+}
+
+/* Deshabilito selección en contenido protegido */
+.protected-content,
+.content-item,
+.secure-video-wrapper {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ========== PROTECCIÓN DE VIDEOS ========== */
+video {
+    -webkit-user-drag: none;
+}
+
+/* Oculto controles de descarga en navegadores que lo soporten */
+video::-internal-media-controls-download-button {
+    display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow: hidden !important;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px) !important;
+}
+
+/* Fuerzo ocultar el botón de pantalla completa nativo */
+video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+}
+
+video::-internal-media-controls-fullscreen-button {
+    display: none !important;
+}
+
+/* === OVERLAY SOBRE VIDEOS EN PANTALLA COMPLETA === */
+.secure-video-wrapper {
+    position: relative;
+}
+
+.secure-video-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ========== WATERMARK PERSISTENTE (para videos) ========== */
+.video-watermark {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1.2rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 25;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transform: rotate(-30deg);
+    white-space: nowrap;
+}
+
+/* Posiciones de watermark en videos */
+.video-watermark.top-left {
+    top: 10%;
+    left: 10%;
+}
+
+.video-watermark.top-right {
+    top: 10%;
+    right: 10%;
+}
+
+.video-watermark.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+}
+
+.video-watermark.bottom-left {
+    bottom: 10%;
+    left: 10%;
+}
+
+.video-watermark.bottom-right {
+    bottom: 10%;
+    right: 10%;
+}
+
+/* ========== ANTI-SELECCIÓN GLOBAL ========== */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* ========== ESTILOS PARA MÓVIL ========== */
+@media (max-width: 768px) {
+    .protection-icon {
+        font-size: 3rem;
+    }
+
+    .protection-text {
+        font-size: 1.2rem;
+    }
+
+    .dynamic-watermark .wm-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== ANIMACIÓN DE ALERTA ========== */
+@keyframes protection-flash {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.protection-alert {
+    animation: protection-flash 0.5s ease 3;
+}
+
+/* === MARCA DE AGUA UNIFICADA Y LIGHTBOX === */
+.media-container {
+    position: relative;
+    overflow: hidden;
+    background: #020617;
+    border-radius: 12px;
+}
+
+.watermark {
+    position: absolute;
+    pointer-events: none;
+    color: rgba(255, 215, 0, 0.4);
+    /* Oro con mayor opacidad */
+    font-size: 1.1rem;
+    font-weight: 900;
+    white-space: nowrap;
+    z-index: 1000;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.9),
+        -1px -1px 0 rgba(0, 0, 0, 0.5);
+    transition: all 4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Variaciones para múltiples instancias */
+.watermark.wm-v2 {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.9rem;
+}
+
+.watermark.wm-v3 {
+    color: rgba(212, 175, 55, 0.35);
+    font-size: 1.3rem;
+}
+
+#mediaLightbox {
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-media {
+    max-width: 100%;
+    max-height: 90vh;
+    display: block;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1000001;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.1);
+    color: #d4af37;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 0.75rem;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+    background: #d4af37;
+    color: #000;
+}
+
+/* Aseguro que la marca de agua se mantenga arriba en pantalla completa */
+:fullscreen .watermark,
+:-webkit-full-screen .watermark {
+    font-size: 2rem;
+    opacity: 0.2;
+}
+
+/* Corrección de Zoom/Escalado en Pantalla Completa */
+:fullscreen,
+:-webkit-full-screen {
+    background: #000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+:fullscreen video,
+:fullscreen img,
+:-webkit-full-screen video,
+:-webkit-full-screen img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+}
+
+/* Opcional: Reinicio relación de aspecto en pantalla completa para evitar zoom */
+:fullscreen .media-wrapper,
+:-webkit-full-screen .media-wrapper {
+    aspect-ratio: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+}

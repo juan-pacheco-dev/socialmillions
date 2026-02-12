@@ -1,0 +1,138 @@
+/* css/admin_global.css - Sistema Responsivo de Admin Unificado */
+
+/* 1. Ajustes Base para Móvil */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    main,
+    .container,
+    .wrapper,
+    .users-table-container,
+    .admin-wrapper {
+        padding-top: 80px !important;
+        /* Espaciado estandarizado para el encabezado móvil */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .hidden-mobile {
+        display: none !important;
+    }
+}
+
+/* 2. "Vista de Tarjeta" para Tablas Responsivas */
+@media (max-width: 768px) {
+
+    /* Oculto los encabezados */
+    .users-table thead,
+    .impulsos-table thead,
+    .events-table thead,
+    table thead {
+        display: none;
+    }
+
+    .users-table tr,
+    .impulsos-table tr,
+    table tr {
+        display: block;
+        background: #1e293b;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .users-table td,
+    .impulsos-table td,
+    table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+    }
+
+    .users-table td:last-child,
+    table td:last-child {
+        border-bottom: none !important;
+        padding-top: 15px !important;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Etiquetas de columna usando el atributo data-label */
+    .users-table td::before,
+    .impulsos-table td::before,
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #94a3b8;
+        font-size: 0.75rem;
+        text-align: left;
+    }
+
+    /* Alineación fija para ciertos elementos */
+    .users-table td>*,
+    table td>* {
+        max-width: 60%;
+    }
+
+    /* Estilos específicos para Acciones */
+    .users-table td[data-label="Acciones"],
+    table td[data-label="Acciones"] {
+        display: block;
+    }
+
+    .users-table td[data-label="Acciones"]::before,
+    table td[data-label="Acciones"]::before {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .users-table td[data-label="Acciones"]>*,
+    table td[data-label="Acciones"]>* {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+
+/* 3. Clases de Utilidad */
+.mobile-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .mobile-stack {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+.scroll-hint {
+    display: none;
+}

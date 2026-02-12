@@ -1,0 +1,560 @@
+/* model_panel.css - Estética de Lujo Sensual (Oro y Ónix) */
+
+:root {
+    --luxury-gold: #d4af37;
+    --luxury-gold-glow: rgba(212, 175, 55, 0.4);
+    --luxury-onyx: #050505;
+    --luxury-crimson: #4a0404;
+    --luxury-card-bg: rgba(10, 10, 10, 0.85);
+    --luxury-border: rgba(212, 175, 55, 0.15);
+    --luxury-text: #e0e0e0;
+}
+
+body {
+    margin: 0;
+    background: url('../img/secret_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--luxury-text);
+    padding-bottom: 0;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(74, 4, 4, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        rgba(0, 0, 0, 0.82);
+    z-index: -1;
+}
+
+.model-panel-luxury {
+    padding: 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+/* ENCABEZADO DE LUJO */
+.panel-header-luxury {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--luxury-border);
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.welcome-section h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    margin: 10px 0 0;
+    letter-spacing: -1px;
+}
+
+.luxury-badge {
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--luxury-gold);
+    color: var(--luxury-gold);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 2px;
+}
+
+.gradient-gold {
+    background: linear-gradient(90deg, #d4af37, #f7ef8a, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.luxury-header-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-luxury {
+    display: inline-block;
+    padding: 12px 25px;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--luxury-gold);
+    border: 1px solid var(--luxury-gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.btn-luxury:hover {
+    background: var(--luxury-gold);
+    color: #000;
+}
+
+.btn-luxury-outline {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.btn-luxury-outline:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+/* TARJETAS */
+.luxury-card {
+    background: var(--luxury-card-bg);
+    border: 1px solid var(--luxury-border);
+    border-radius: 4px;
+    padding: 25px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.luxury-card.no-padding {
+    padding: 0;
+}
+
+.card-header-luxury {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--luxury-border);
+    background: rgba(212, 175, 55, 0.03);
+}
+
+.luxury-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--luxury-gold);
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* CUADRÍCULA DE DISEÑO */
+.panel-layout-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 1150px) {
+    .panel-layout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SIDEBAR SPECIALS */
+.code-card-special {
+    background: linear-gradient(135deg, #4a0404 0%, #050505 100%);
+    border-color: #7a1a1a;
+    text-align: center;
+}
+
+.unique-code-luxury {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px dashed var(--luxury-gold);
+    border-radius: 4px;
+}
+
+.unique-code-luxury span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--luxury-gold);
+    letter-spacing: 4px;
+    word-break: break-all;
+}
+
+/* CUADRÍCULA DE CARPETAS RESTAURADA */
+.luxury-folders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.luxury-folder-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--luxury-border);
+    padding: 15px;
+    border-radius: 4px;
+    transition: 0.3s;
+    text-align: center;
+    position: relative;
+}
+
+.luxury-folder-card:hover {
+    border-color: var(--luxury-gold);
+    background: rgba(212, 175, 55, 0.05);
+    transform: translateY(-3px);
+}
+
+.folder-header {
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.folder-main-link {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.folder-big-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.folder-name-display {
+    font-weight: 700;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+}
+
+.luxury-rename-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.luxury-rename-form-card input {
+    width: 100% !important;
+    font-size: 0.7rem !important;
+    padding: 4px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    text-align: center;
+}
+
+.btn-luxury-icon {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--luxury-gold);
+    padding: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.action-del {
+    color: #ff4d4d;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1rem;
+    opacity: 0.5;
+}
+
+.action-del:hover {
+    opacity: 1;
+}
+
+/* FORMULARIOS DE LUJO */
+.luxury-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.luxury-form-inline {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--luxury-gold);
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.luxury-form input,
+.luxury-form select,
+.luxury-form textarea,
+.luxury-form-inline input {
+    background: #000;
+    border: 1px solid #222;
+    color: #fff;
+    padding: 12px 15px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 2px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.file-upload-luxury label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border: 2px dashed #333;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* TABLAS DE LUJO */
+.table-responsive-luxury {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.luxury-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.luxury-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 2px;
+}
+
+.luxury-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #111;
+    vertical-align: middle;
+}
+
+.luxury-thumbnail {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #222;
+    background: #000;
+}
+
+.luxury-thumbnail img,
+.luxury-thumbnail video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.video-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.2rem;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* AJUSTE DE FOOTER */
+footer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* BOTONES */
+.btn-luxury-main {
+    width: 100%;
+    padding: 15px;
+    background: var(--luxury-gold);
+    color: #000;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-luxury-back {
+    display: inline-block;
+    color: var(--luxury-gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* CLIENTES */
+.client-info-luxury {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.client-avatar {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #4a0404, #900);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: #fff;
+}
+
+.luxury-action-group {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+}
+
+.btn-action {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 0.8rem;
+}
+
+.btn-action.chat {
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+}
+
+.btn-action.chat:hover {
+    background: #3b82f6;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+.btn-action.call {
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+.btn-action.call:hover {
+    background: #ef4444;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.btn-action.lock {
+    color: #10b981;
+    border: 1px solid #10b981;
+}
+
+.btn-action.lock:hover {
+    background: #10b981;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.btn-action.del {
+    color: #666;
+    border: 1px solid #333;
+}
+
+.btn-action.del:hover {
+    background: #ff4d4d;
+    color: #fff;
+    border-color: #ff4d4d;
+}
+
+/* RESPONSIVO MÓVIL */
+@media (max-width: 768px) {
+    .model-panel-luxury {
+        padding: 30px 15px;
+    }
+
+    .panel-header-luxury {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .luxury-folders-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+
+    .luxury-table,
+    .luxury-table thead,
+    .luxury-table tbody,
+    .luxury-table th,
+    .luxury-table td,
+    .luxury-table tr {
+        display: block;
+        min-width: 0;
+    }
+
+    .luxury-table thead {
+        display: none;
+    }
+
+    .luxury-table tr {
+        border-bottom: 1px solid var(--luxury-border);
+        padding: 15px 0;
+        position: relative;
+    }
+
+    .td-media {
+        width: 100%;
+        text-align: center;
+    }
+
+    .luxury-thumbnail {
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+    }
+
+    .td-info {
+        text-align: center;
+        padding: 10px 0 !important;
+    }
+
+    .luxury-action-group {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}

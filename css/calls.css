@@ -1,0 +1,383 @@
+/**
+ * Estilos para el Sistema de Videollamadas
+ * 
+ * Interfaz moderna y responsive para llamadas WebRTC.
+ */
+
+/* ========== VARIABLES ========== */
+:root {
+    --call-bg: #000;
+    --call-overlay: rgba(0, 0, 0, 0.8);
+    --call-gold: #FFD700;
+    --call-gold-dark: #b8860b;
+    --call-green: #22c55e;
+    --call-red: #ef4444;
+    --call-gray: #333;
+    --call-light-gray: #666;
+}
+
+/* ========== MODAL DE LLAMADA ========== */
+.call-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--call-bg);
+    z-index: 99999;
+    flex-direction: column;
+}
+
+.call-modal.active {
+    display: flex;
+}
+
+/* ========== ÁREA DE VIDEO ========== */
+.call-video-container {
+    flex: 1;
+    position: relative;
+    background: #111;
+    overflow: hidden;
+}
+
+/* Video remoto (grande) */
+.call-remote-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+}
+
+/* Video local (pequeño, esquina) */
+.call-local-video {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--call-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    background: #222;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .call-local-video {
+        width: 100px;
+        height: 133px;
+        bottom: 120px;
+        right: 10px;
+    }
+}
+
+/* ========== ESTADO DE LLAMADA ========== */
+.call-status-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.call-status-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.call-status-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.call-status-text {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+
+.call-status-subtitle {
+    font-size: 1rem;
+    color: var(--call-light-gray);
+    margin-top: 10px;
+}
+
+/* ========== CONTROLES DE LLAMADA ========== */
+.call-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.call-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.call-btn:hover {
+    transform: scale(1.1);
+}
+
+.call-btn:active {
+    transform: scale(0.95);
+}
+
+/* Botón de micrófono */
+.call-btn-mute {
+    background: var(--call-gray);
+    color: #fff;
+}
+
+.call-btn-mute.muted {
+    background: var(--call-red);
+}
+
+/* Botón de video */
+.call-btn-video {
+    background: var(--call-gray);
+    color: #fff;
+}
+
+.call-btn-video.off {
+    background: var(--call-red);
+}
+
+/* Botón de colgar */
+.call-btn-hangup {
+    background: var(--call-red);
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+}
+
+.call-btn-hangup:hover {
+    background: #dc2626;
+}
+
+/* Botón de aceptar */
+.call-btn-accept {
+    background: var(--call-green);
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+}
+
+.call-btn-accept:hover {
+    background: #16a34a;
+}
+
+/* ========== INFORMACIÓN DE LLAMADA ========== */
+.call-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 15;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.call-peer-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--call-gold);
+}
+
+.call-timer {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+    font-family: monospace;
+}
+
+/* ========== LLAMADA ENTRANTE (NOTIFICACIÓN) ========== */
+.incoming-call-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99998;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.incoming-call-overlay.active {
+    display: flex;
+}
+
+.incoming-call-card {
+    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid var(--call-gold);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.incoming-call-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: ring 1s infinite;
+}
+
+@keyframes ring {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+.incoming-call-title {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.incoming-call-name {
+    font-size: 1.8rem;
+    color: var(--call-gold);
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.incoming-call-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* ========== ANIMACIÓN DE CONEXIÓN ========== */
+.connecting-dots {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.connecting-dots span {
+    width: 10px;
+    height: 10px;
+    background: var(--call-gold);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.connecting-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.connecting-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.connecting-dots span:nth-child(3) {
+    animation-delay: 0;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 480px) {
+    .call-controls {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .call-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .call-btn-hangup,
+    .call-btn-accept {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .incoming-call-card {
+        padding: 30px;
+    }
+
+    .incoming-call-name {
+        font-size: 1.5rem;
+    }
+}

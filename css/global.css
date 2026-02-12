@@ -1,0 +1,217 @@
+/* css/global.css */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #020617;
+    --card-bg: #0f172a;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #cbd5e1;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border-color: #1e293b;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #020617 !important;
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+p,
+span,
+label,
+td,
+th {
+    color: #cbd5e1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff !important;
+    font-weight: 800;
+}
+
+a {
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 12px;
+    }
+}
+
+/* Reinicio Global de Formularios para Móvil */
+input,
+textarea,
+select,
+button {
+    max-width: 100%;
+}
+
+
+/* Utilidad de Tabla Responsiva */
+.table-responsive {
+    width: 100% !important;
+    max-width: 100vw;
+    overflow-x: auto !important;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+
+.table-responsive table {
+    min-width: 850px !important;
+    width: max-content !important;
+    border-collapse: collapse;
+    /* Mejor para el scroll usualmente */
+}
+
+
+@media (max-width: 600px) {
+    .table-responsive table {
+        min-width: 650px;
+        /* Ligeramente menos en pantallas muy pequeñas */
+    }
+}
+
+
+.table-responsive::-webkit-scrollbar {
+    height: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+/* Pista visual para el scroll */
+.scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 900px) {
+    .scroll-hint {
+        display: flex;
+        justify-content: center;
+        background: rgba(37, 99, 235, 0.1);
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px dashed var(--accent);
+    }
+}
+
+
+
+
+/* Sistema de Tarjetas del Dashboard */
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.panel-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid #334155;
+    padding: 48px 32px;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel-card:hover {
+    transform: translateY(-12px);
+    border-color: #3b82f6;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+}
+
+.panel-card::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #3b82f6;
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    top: -30px;
+    right: -30px;
+}
+
+.panel-card:hover::after {
+    opacity: 0.3;
+}
+
+.panel-card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 10px 10px rgba(59, 130, 246, 0.2));
+}
+
+.panel-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.panel-card p {
+    color: #94a3b8;
+    font-size: 1rem;
+    line-height: 1.5;
+}

@@ -1,0 +1,69 @@
+.content-form-container {
+    margin: 120px auto 60px;
+    padding: 40px;
+    background: #0f172a;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .content-form-container {
+        margin-top: 100px;
+        padding: 24px;
+    }
+}
+
+
+.content-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.content-card {
+    background: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    transition: all 0.2s;
+}
+
+.content-card:hover {
+    transform: translateY(-4px);
+    border-color: #3b82f6;
+}
+
+.content-media {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    background: #020617;
+    display: block;
+    padding: 5px;
+    /* Se añadió relleno para la visibilidad de los controles */
+}
+
+
+.content-info {
+    padding: 20px;
+}
+
+.content-info h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.content-info p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+p {
+    color: white;
+}

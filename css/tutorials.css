@@ -1,0 +1,130 @@
+/* tutorials.css - Estilos Unificados para Tutoriales de Admin y Modelo */
+:root {
+    --gold: #d4af37;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    --bg-dark: #0a0a0a;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+}
+
+.tutorial-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.tutorial-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tutorial-header h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 2.5rem;
+}
+
+/* Cuadrícula de Tutoriales */
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.tutorial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tutorial-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--gold-glow);
+}
+
+.tutorial-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+}
+
+.tutorial-media img,
+.tutorial-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tutorial-info {
+    padding: 25px;
+}
+
+.tutorial-title {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+.tutorial-desc {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.btn-watch {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.btn-watch:hover {
+    border-bottom-color: var(--gold);
+    padding-left: 5px;
+}
+
+/* Diseño de Dos Columnas para Admin */
+.admin-tutorial-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 40px;
+}
+
+.admin-form-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 30px;
+    border-radius: 20px;
+    height: fit-content;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .admin-tutorial-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .tutorial-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .tutorial-grid {
+        grid-template-columns: 1fr;
+    }
+}

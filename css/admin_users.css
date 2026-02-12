@@ -1,0 +1,469 @@
+/* css/admin_users.css */
+.users-table-container {
+    margin: 100px auto 40px;
+    padding: 24px;
+    background: #0f172a;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* ESTILOS DE ESCRITORIO MOVIDOS DESDE EL PHP INLINE */
+/* Estilos adicionales para las secciones */
+.section-card {
+    background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-title-custom {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title-custom.nuevos {
+    color: #f59e0b;
+}
+
+.section-title-custom.streamers {
+    color: #3b82f6;
+}
+
+.section-title-custom.plus18 {
+    color: #ec4899;
+}
+
+.section-title-custom.viewers {
+    color: #eab308;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.badge-nuevos {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.badge-streamers {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
+
+.badge-plus18 {
+    background: rgba(236, 72, 153, 0.2);
+    color: #ec4899;
+}
+
+.badge-viewers {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    font-style: italic;
+}
+
+.nuevo-info {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.nuevo-info-item {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.nuevo-info-item strong {
+    color: #94a3b8;
+    min-width: 120px;
+}
+
+.nuevo-info-item span {
+    color: #e2e8f0;
+}
+
+.action-btn.btn-promote {
+    background: #16a34a;
+    border-color: #15803d;
+}
+
+.action-btn.btn-promote:hover {
+    background: #22c55e;
+}
+
+/* Filas ocultas de "Cargar Más" */
+.user-row.hidden {
+    display: none !important;
+}
+
+.load-more-btn {
+    width: 100%;
+    margin-top: 15px;
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.load-more-btn:hover {
+    background: #334155;
+    color: white;
+}
+
+.search-container {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+}
+
+/* --- BARRA DE DESPLAZAMIENTO PERSONALIZADA (SOLO ESCRITORIO) --- */
+@media (min-width: 769px) {
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #475569;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #64748b;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* --- 1. REINICIOS Y CORRECCIONES DE DESPLAZAMIENTO (DESPLAZAMIENTO NATURAL) --- */
+    html,
+    body {
+        overflow-y: auto !important;
+        /* Permitir desplazamiento natural */
+        overflow-x: hidden !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Elimino la barra de desplazamiento personalizada en Móvil para evitar problemas */
+    ::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+    }
+
+    .users-table-container {
+        margin-top: 140px !important;
+        /* BRECHA AUMENTADA A 140px PARA DESPEJAR EL ENCABEZADO DE FORMA SEGURA */
+        padding: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    .section-card {
+        padding: 0 !important;
+        margin-bottom: 25px !important;
+        background: transparent !important;
+        border: none !important;
+        overflow: visible !important;
+    }
+
+    /* --- 2. DISEÑO DE TARJETA --- */
+    .users-table,
+    .users-table tbody,
+    .users-table tr,
+    .users-table td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+    }
+
+    .users-table thead {
+        display: none !important;
+    }
+
+    /* ESTILO DE TARJETA */
+    .users-table tr {
+        background: #020617 !important;
+        margin-bottom: 20px !important;
+        border-radius: 12px !important;
+        border: 1px solid #3b82f6 !important;
+        padding: 15px !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+        position: relative !important;
+    }
+
+    /* ESTILO DE FILA */
+    .users-table td {
+        background: transparent !important;
+        padding: 8px 0 !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(59, 130, 246, 0.1) !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        text-align: left !important;
+        color: #e2e8f0 !important;
+        font-size: 0.9rem !important;
+        gap: 15px !important;
+
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .users-table td:last-child {
+        border-bottom: none !important;
+        display: block !important;
+        /* Apilar botones */
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        border-top: 1px dashed #334155 !important;
+    }
+
+    /* ETIQUETAS */
+    .users-table td::before {
+        content: attr(data-label);
+        flex: 0 0 90px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: #94a3b8;
+        letter-spacing: 0.05em;
+        text-align: left;
+    }
+
+    /* Ocultar etiquetas redundantes */
+    .users-table td[data-label="Acciones"]::before {
+        display: none !important;
+    }
+
+    /* --- 3. MICRO BOTONES --- */
+    .mobile-stack {
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .action-btn {
+        width: auto !important;
+        flex: 0 1 auto !important;
+        min-width: 65px;
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        justify-content: center !important;
+        border-radius: 6px !important;
+        margin: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* Load More Button */
+    .load-more-btn {
+        background: #f59e0b !important;
+        color: #000 !important;
+        border: none !important;
+        padding: 12px !important;
+        font-size: 0.9rem !important;
+        margin-top: 10px !important;
+        width: 100% !important;
+        border-radius: 8px;
+    }
+}
+
+.table-title {
+    margin-bottom: 24px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 800;
+    color: #ffffff !important;
+    letter-spacing: -0.01em;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+}
+
+.users-table th {
+    padding: 12px 15px;
+    text-align: left;
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #1e293b;
+    white-space: nowrap;
+}
+
+.users-table td {
+    padding: 12px 15px;
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.users-table tr td:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.users-table tr td:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.status-pendiente {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.status-activo {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.status-bloqueado {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.action-btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    gap: 5px;
+}
+
+.btn-approve {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+.btn-approve:hover {
+    background: #2563eb;
+}
+
+.btn-block {
+    background: #334155;
+    color: #e2e8f0;
+}
+
+.btn-block:hover {
+    background: #475569;
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* REFINED MOBILE RESPONSIVE (Horizontal Scroll with hint) */
+.table-responsive {
+    border-radius: 8px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.table-responsive table {
+    min-width: 800px;
+}
+
+/* Old mobile media query removed/merged above */
+
+/* MODALS */
+.modal-content {
+    background: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 12px !important;
+    max-width: 95% !important;
+    margin: auto !important;
+}
+
+@media (max-width: 600px) {
+    .asset-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .action-btn {
+        width: 100%;
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+}
